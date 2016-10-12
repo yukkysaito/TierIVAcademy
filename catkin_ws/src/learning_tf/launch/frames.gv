@@ -1,3 +1,0 @@
-digraph G {
-"world" -> "turtle1"[label="Broadcaster: /turtle1_broadcaster\nAverage rate: 3110000.000 Hz\nMost recent transform: 0.000 \nBuffer length: 0.000 sec\n"];
-}
