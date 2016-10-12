@@ -7,6 +7,7 @@ project(tutorials)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -48,6 +49,7 @@ find_package(catkin REQUIRED COMPONENTS
 #   Message1.msg
 #   Message2.msg
 # )
+add_message_files( FILES user.msg )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -55,6 +57,7 @@ find_package(catkin REQUIRED COMPONENTS
 #   Service1.srv
 #   Service2.srv
 # )
+add_service_files( FILES AddNums.srv )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -64,10 +67,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -127,16 +130,34 @@ include_directories(
 # add_dependencies(tutorials ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(simple src/simple.cpp)
+# add_executable(tutorials_node src/tutorials_node.cpp)
+add_executable(simple src/simple.cpp) # for lesson1
+add_executable(talker src/talker.cpp) # for lesson2
+add_executable(listener src/listener.cpp) # for lesson2
+add_executable(talker2 src/talker2.cpp) # for lesson2
+add_executable(listener2 src/listener2.cpp) # for lesson2
+add_executable(parameter src/parameter.cpp) # for lesson2
+add_executable(client src/client.cpp)
+add_executable(server src/server.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(tutorials_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(client ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(server ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(simple
-  ${catkin_LIBRARIES}
-)
+# target_link_libraries(tutorials_node
+#   ${catkin_LIBRARIES}
+# )
+target_link_libraries(simple ${catkin_LIBRARIES}) # for lesson1
+target_link_libraries(talker ${catkin_LIBRARIES}) # for lesson2
+target_link_libraries(listener ${catkin_LIBRARIES}) # for lesson2
+target_link_libraries(talker2 ${catkin_LIBRARIES}) # for lesson2
+target_link_libraries(listener2 ${catkin_LIBRARIES}) # for lesson2
+target_link_libraries(parameter ${catkin_LIBRARIES}) # for lesson2
+target_link_libraries(client ${catkin_LIBRARIES})
+target_link_libraries(server ${catkin_LIBRARIES})
+
 
 #############
 ## Install ##
