@@ -130,7 +130,7 @@ include_directories(
 ## Declare a C++ executable
 # add_executable(learning_tf_node src/learning_tf_node.cpp)
 add_executable(broadcaster src/broadcaster.cpp)
-add_executable(listener src/listener.cpp)
+add_executable(listener_tf src/listener_tf.cpp)
 add_executable(add_broadcaster src/add_broadcaster.cpp)
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -141,7 +141,7 @@ add_executable(add_broadcaster src/add_broadcaster.cpp)
 #   ${catkin_LIBRARIES}
 # )
 target_link_libraries(broadcaster ${catkin_LIBRARIES})
-target_link_libraries(listener ${catkin_LIBRARIES})
+target_link_libraries(listener_tf ${catkin_LIBRARIES})
 target_link_libraries(add_broadcaster ${catkin_LIBRARIES})
 #############
 ## Install ##

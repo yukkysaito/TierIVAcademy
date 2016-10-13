@@ -4,7 +4,7 @@
 #include <turtlesim/Spawn.h>
 int main(int argc, char** argv)
 {
-  ros::init(argc, argv, "listener");
+  ros::init(argc, argv, "listener_tf");
   ros::NodeHandle n;
   ros::service::waitForService("spawn");
   ros::ServiceClient add_turtle = n.serviceClient<turtlesim::Spawn>("spawn");
